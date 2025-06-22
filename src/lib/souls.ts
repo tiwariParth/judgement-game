@@ -165,6 +165,40 @@ const finalThoughts = [
   "I hope my children will be okay without me.",
 ];
 
+// Sample personality traits
+const personalityTraits = [
+  "Kind",
+  "Ambitious",
+  "Loyal",
+  "Deceitful",
+  "Generous",
+  "Selfish",
+  "Patient",
+  "Impulsive",
+  "Courageous",
+  "Fearful",
+  "Honest",
+  "Manipulative",
+  "Compassionate",
+  "Callous",
+  "Wise",
+  "Foolish",
+  "Forgiving",
+  "Vengeful",
+  "Disciplined",
+  "Chaotic",
+  "Humble",
+  "Arrogant",
+  "Trusting",
+  "Suspicious",
+  "Creative",
+  "Practical",
+  "Optimistic",
+  "Pessimistic",
+  "Responsible",
+  "Reckless",
+];
+
 /**
  * Generates a random soul with life events and final thoughts
  */
@@ -184,8 +218,15 @@ export function generateSoul(): Soul {
 
   const finalThought = randomItem(finalThoughts);
 
+  // Generate a life summary
+  const lifeSummary = generateLifeSummary(name, age, lifeEvents);
+
   // Each soul has a random ID
   const id = nanoid();
+
+  // Randomly assign personality traits
+  const personalityTraits =
+    Math.random() > 0.3 ? generatePersonalityTraits() : undefined;
 
   return {
     id,
@@ -194,6 +235,8 @@ export function generateSoul(): Soul {
     causeOfDeath,
     lifeEvents,
     finalThought,
+    lifeSummary,
+    personalityTraits,
   };
 }
 
@@ -239,6 +282,9 @@ export function generatePredefinedSoul(
         },
       ],
       finalThought: "I only wish I could have done more to help others.",
+      lifeSummary:
+        "Eleanor Michaels lived a life dedicated to selfless service and compassion. From founding schools in developing countries to adopting children from war-torn regions, her 78 years were characterized by unwavering dedication to improving the lives of others. Despite occasional moments of human weakness, her positive impact on the world was immeasurable.",
+      personalityTraits: ["Compassionate", "Selfless", "Determined"],
     };
   }
 
@@ -277,6 +323,9 @@ export function generatePredefinedSoul(
         },
       ],
       finalThought: "They never understood that I did what I had to do.",
+      lifeSummary:
+        "Victor Reynolds pursued wealth and power through increasingly unethical means throughout his 62 years. His life was marked by embezzlement, abandonment, and violence, leaving a trail of victims in his wake. While a rare moment of compassion surfaced near the end of his life, it did little to offset the extensive damage he inflicted on countless innocent lives.",
+      personalityTraits: ["Manipulative", "Ruthless", "Selfish"],
     };
   }
 
@@ -317,6 +366,9 @@ export function generatePredefinedSoul(
       },
     ],
     finalThought: "I hope someone remembers the good I tried to do.",
+    lifeSummary:
+      "Raj Malhotra's 42 years reflected the complicated nature of human morality. His early life was marred by difficult choices and addiction, causing harm to those closest to him. Yet his later years showed remarkable growth as he dedicated himself to helping others through disaster relief and standing up for justice, even at great personal cost. His final act of selflessness ultimately cost him his life.",
+    personalityTraits: ["Resilient", "Courageous", "Flawed"],
   };
 }
 
@@ -368,4 +420,52 @@ function generateLifeEvents(count: number, maxAge: number): LifeEvent[] {
 // Helper function to get a random item from an array
 function randomItem<T>(items: T[]): T {
   return items[Math.floor(Math.random() * items.length)];
+}
+
+/**
+ * Generates a life summary based on the soul's details and events
+ */
+function generateLifeSummary(
+  name: string,
+  age: number,
+  events: LifeEvent[]
+): string {
+  // Calculate overall moral tendency
+  const moralSum = events.reduce((sum, event) => sum + event.moralValue, 0);
+  const moralAverage = moralSum / events.length;
+
+  // Determine life characterization based on moral average
+  let lifeCharacterization = "";
+  if (moralAverage > 0.5) {
+    lifeCharacterization = "a generally virtuous";
+  } else if (moralAverage > 0.2) {
+    lifeCharacterization = "a mostly decent";
+  } else if (moralAverage > -0.2) {
+    lifeCharacterization = "a morally complex";
+  } else if (moralAverage > -0.5) {
+    lifeCharacterization = "a troubled";
+  } else {
+    lifeCharacterization = "a morally corrupt";
+  }
+
+  // Create a basic life summary
+  return `${name} lived ${lifeCharacterization} life spanning ${age} years. Their journey was marked by significant choices that shaped their character and the lives of those around them. The consequences of these actions now await judgment.`;
+}
+
+/**
+ * Generates a random set of personality traits
+ */
+function generatePersonalityTraits(): string[] {
+  const numTraits = Math.floor(Math.random() * 3) + 1; // 1-3 traits
+  const traits: string[] = [];
+
+  // Get random traits, ensuring no duplicates
+  while (traits.length < numTraits) {
+    const trait = randomItem(personalityTraits);
+    if (!traits.includes(trait)) {
+      traits.push(trait);
+    }
+  }
+
+  return traits;
 }

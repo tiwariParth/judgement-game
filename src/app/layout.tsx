@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
+import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { Playfair_Display } from "next/font/google";
 
@@ -21,6 +22,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const pressStart2P = Press_Start_2P({
+  weight: "400",
+  variable: "--font-press-start",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Judgment: The Reaper's Dilemma",
   description:
@@ -36,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${playfairDisplay.variable} ${geistMono.variable} antialiased font-sans`}
+        className={`${inter.variable} ${playfairDisplay.variable} ${geistMono.variable} ${pressStart2P.variable} antialiased font-sans`}
       >
         {children}
       </body>

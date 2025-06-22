@@ -10,6 +10,10 @@ export interface Soul {
   causeOfDeath: string;
   lifeEvents: LifeEvent[];
   finalThought: string;
+  // Life summary paragraph
+  lifeSummary: string;
+  // Personality traits array
+  personalityTraits?: string[];
   // Optional avatar/image path
   avatar?: string;
   // For special souls that might be unlocked based on player progress

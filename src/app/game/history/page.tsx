@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useGameStore } from "@/store/game-store";
@@ -67,28 +68,67 @@ export default function HistoryPage() {
   };
 
   return (
-    <div className="container mx-auto py-8 judgment-scroll">
+    <div className="container mx-auto py-8 pixel-bg relative">
+      {/* Reaper Avatar */}
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="absolute top-4 left-4 hidden md:block"
+      >
+        <div className="relative w-24 h-24">
+          <Image
+            src="/pixel-art/reaper.svg"
+            alt="Reaper"
+            width={96}
+            height={96}
+            className="pixel-art animate-pulse-slow"
+          />
+        </div>
+      </motion.div>
+
+      {/* Scale of Justice */}
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="absolute top-4 right-4 hidden md:block"
+      >
+        <div className="relative w-24 h-24">
+          <Image
+            src="/pixel-art/scale.svg"
+            alt="Scale"
+            width={96}
+            height={96}
+            className="pixel-art animate-pulse-slow"
+          />
+        </div>
+      </motion.div>
+
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="text-center mb-8"
+        className="text-center mb-8 retro-container scanline relative"
       >
-        <h1 className="font-serif text-4xl sm:text-5xl text-shimmer mb-2">
+        <h1 className="pixel-text text-4xl sm:text-5xl text-secondary-gold mb-2 tracking-widest">
           Judgment Ledger
         </h1>
         <p className="text-foreground/70 max-w-xl mx-auto mb-6">
           A record of all souls you have judged and their eternal fates.
         </p>
 
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-          <Button
-            variant="outline"
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-block"
+        >
+          <button
             onClick={() => router.push("/game/judgment")}
-            className="mb-8 backdrop-blur-sm border-2 border-secondary-gold/30 text-secondary-gold hover:bg-secondary-gold/20"
+            className="pixel-button bg-secondary-gold/20 text-secondary-gold"
           >
             Return to Judgment Chamber
-          </Button>
+          </button>
         </motion.div>
       </motion.header>
 
@@ -97,21 +137,45 @@ export default function HistoryPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="text-center p-8 border-2 border-foreground/20 rounded-xl bg-primary-purple/30 backdrop-blur-sm mystical-shadow"
+          className="text-center p-8 retro-container scanline"
         >
-          <p className="text-lg">No souls have been judged yet.</p>
+          <div className="mb-6">
+            <Image
+              src="/pixel-art/soul.svg"
+              alt="Lost Soul"
+              width={64}
+              height={64}
+              className="pixel-art inline-block animate-float"
+            />
+          </div>
+
+          <p className="pixel-text text-lg mb-4">
+            No souls have been judged yet
+          </p>
+
+          <div className="flex gap-2 justify-center mt-8">
+            <div className="w-4 h-4 bg-secondary-gold animate-pulse-slow"></div>
+            <div
+              className="w-4 h-4 bg-secondary-gold animate-pulse-slow"
+              style={{ animationDelay: "0.2s" }}
+            ></div>
+            <div
+              className="w-4 h-4 bg-secondary-gold animate-pulse-slow"
+              style={{ animationDelay: "0.4s" }}
+            ></div>
+          </div>
+
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-4 inline-block"
+            className="mt-8 inline-block"
           >
-            <Button
-              variant="default"
-              className="bg-secondary-gold hover:bg-secondary-gold-bright text-primary-dark font-semibold"
+            <button
+              className="pixel-button bg-secondary-gold text-primary-dark"
               onClick={() => router.push("/game/judgment")}
             >
               Begin Judgment
-            </Button>
+            </button>
           </motion.div>
         </motion.div>
       ) : (
@@ -119,8 +183,32 @@ export default function HistoryPage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-4"
+          className="space-y-8 relative"
         >
+          <div className="absolute left-0 hidden xl:block ml-4 mt-16 space-y-12">
+            <Image
+              src="/pixel-art/heaven-gate.svg"
+              width={48}
+              height={48}
+              alt="Heaven Gate"
+              className="pixel-art"
+            />
+            <Image
+              src="/pixel-art/hell-gate.svg"
+              width={48}
+              height={48}
+              alt="Hell Gate"
+              className="pixel-art"
+            />
+            <Image
+              src="/pixel-art/redemption-gate.svg"
+              width={48}
+              height={48}
+              alt="Redemption Gate"
+              className="pixel-art"
+            />
+          </div>
+
           {judgmentHistory
             .slice()
             .reverse()
@@ -128,14 +216,14 @@ export default function HistoryPage() {
               <motion.div
                 key={record.id}
                 variants={itemVariants}
-                whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                className={`border-2 rounded-xl p-5 shadow-lg backdrop-blur-sm relative overflow-hidden ${
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                className={`retro-container relative overflow-hidden ${
                   record.judgment === "HEAVEN"
-                    ? "celestial-border"
+                    ? "pixel-heaven"
                     : record.judgment === "HELL"
-                    ? "infernal-border"
-                    : "redemption-border"
-                } ${getJudgmentBackground(record.judgment)}`}
+                    ? "pixel-hell"
+                    : "pixel-redemption"
+                }`}
               >
                 {/* Background pattern effect */}
                 <div className="absolute inset-0 opacity-10 pointer-events-none z-0">

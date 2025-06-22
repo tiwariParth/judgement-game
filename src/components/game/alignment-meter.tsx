@@ -45,10 +45,8 @@ export function AlignmentMeter({
   };
 
   return (
-    <div
-      className={`bg-primary-purple/30 backdrop-blur-sm rounded-xl p-5 border border-foreground/10 ${className}`}
-    >
-      <h3 className="font-serif text-xl mb-4 text-secondary-gold text-center">
+    <div className={`retro-container scanline ${className}`}>
+      <h3 className="pixel-text text-xl mb-4 text-secondary-gold text-center">
         Reaper Alignment:{" "}
         <span className="font-semibold">{getAlignmentDescription()}</span>
       </h3>
@@ -56,10 +54,10 @@ export function AlignmentMeter({
       <div className="space-y-4">
         <div>
           <div className="flex justify-between mb-1">
-            <span className="text-hell">🧨 Wrath</span>
+            <span className="text-hell pixel-text">Wrath</span>
             <span className="text-sm">{Math.round(wrath * 100)}%</span>
           </div>
-          <div className="h-2 w-full bg-foreground/10 rounded-full overflow-hidden">
+          <div className="h-4 w-full bg-foreground/10 pixel-border overflow-hidden">
             <motion.div
               className="h-full bg-hell"
               initial={{ width: 0 }}
@@ -71,10 +69,10 @@ export function AlignmentMeter({
 
         <div>
           <div className="flex justify-between mb-1">
-            <span className="text-heaven">🕊️ Mercy</span>
+            <span className="text-heaven pixel-text">Mercy</span>
             <span className="text-sm">{Math.round(mercy * 100)}%</span>
           </div>
-          <div className="h-2 w-full bg-foreground/10 rounded-full overflow-hidden">
+          <div className="h-4 w-full bg-foreground/10 pixel-border overflow-hidden">
             <motion.div
               className="h-full bg-heaven"
               initial={{ width: 0 }}
@@ -91,10 +89,10 @@ export function AlignmentMeter({
 
         <div>
           <div className="flex justify-between mb-1">
-            <span className="text-redemption">⚖️ Justice</span>
+            <span className="text-redemption pixel-text">Justice</span>
             <span className="text-sm">{Math.round(justice * 100)}%</span>
           </div>
-          <div className="h-2 w-full bg-foreground/10 rounded-full overflow-hidden">
+          <div className="h-4 w-full bg-foreground/10 pixel-border overflow-hidden">
             <motion.div
               className="h-full bg-redemption"
               initial={{ width: 0 }}
@@ -110,8 +108,8 @@ export function AlignmentMeter({
         </div>
       </div>
 
-      <div className="mt-4 pt-3 border-t border-foreground/10 text-center text-sm text-foreground/60">
-        Total souls judged: <span className="font-semibold">{0}</span>
+      <div className="mt-4 pt-3 border-t border-foreground/10 text-center pixel-text">
+        Souls judged: <span className="font-semibold">{0}</span>
       </div>
     </div>
   );

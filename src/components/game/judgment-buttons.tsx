@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import type { Judgment } from "@/types/game-types";
 
 interface JudgmentButtonsProps {
@@ -47,15 +47,21 @@ export function JudgmentButtons({
         whileTap="tap"
         className="w-full"
       >
-        <Button
-          variant="hell"
-          size="lg"
-          className="w-full text-lg"
-          onClick={() => onJudgment("HELL")}
-          disabled={isDisabled}
+        <div
+          className={`pixel-hell w-full h-full p-4 text-center cursor-pointer ${
+            isDisabled ? "opacity-50 pointer-events-none" : ""
+          }`}
+          onClick={() => !isDisabled && onJudgment("HELL")}
         >
-          🔥 Hell
-        </Button>
+          <Image
+            src="/pixel-art/hell-gate.svg"
+            width={32}
+            height={32}
+            alt="Hell"
+            className="pixel-art inline-block mb-2"
+          />
+          <div className="pixel-text text-lg">HELL</div>
+        </div>
       </motion.div>
 
       <motion.div
@@ -67,15 +73,21 @@ export function JudgmentButtons({
         whileTap="tap"
         className="w-full"
       >
-        <Button
-          variant="heaven"
-          size="lg"
-          className="w-full text-lg"
-          onClick={() => onJudgment("HEAVEN")}
-          disabled={isDisabled}
+        <div
+          className={`pixel-heaven w-full h-full p-4 text-center cursor-pointer ${
+            isDisabled ? "opacity-50 pointer-events-none" : ""
+          }`}
+          onClick={() => !isDisabled && onJudgment("HEAVEN")}
         >
-          🌈 Heaven
-        </Button>
+          <Image
+            src="/pixel-art/heaven-gate.svg"
+            width={32}
+            height={32}
+            alt="Heaven"
+            className="pixel-art inline-block mb-2"
+          />
+          <div className="pixel-text text-lg">HEAVEN</div>
+        </div>
       </motion.div>
 
       <motion.div
@@ -87,15 +99,21 @@ export function JudgmentButtons({
         whileTap="tap"
         className="w-full"
       >
-        <Button
-          variant="redemption"
-          size="lg"
-          className="w-full text-lg"
-          onClick={() => onJudgment("REDEMPTION")}
-          disabled={isDisabled}
+        <div
+          className={`pixel-redemption w-full h-full p-4 text-center cursor-pointer ${
+            isDisabled ? "opacity-50 pointer-events-none" : ""
+          }`}
+          onClick={() => !isDisabled && onJudgment("REDEMPTION")}
         >
-          🌀 Redemption
-        </Button>
+          <Image
+            src="/pixel-art/redemption-gate.svg"
+            width={32}
+            height={32}
+            alt="Redemption"
+            className="pixel-art inline-block mb-2"
+          />
+          <div className="pixel-text text-lg">REDEMPTION</div>
+        </div>
       </motion.div>
     </div>
   );

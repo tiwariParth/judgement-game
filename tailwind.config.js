@@ -67,6 +67,15 @@ module.exports = {
         "infernal-flicker": "infernal-flicker 1.5s infinite alternate",
         "rune-rotate": "rune-rotate 20s linear infinite",
         "moral-shift": "moral-shift 2s ease-out forwards",
+
+        // Pixel Art Animations
+        "pixel-pulse": "pixel-pulse 1s infinite ease-in-out",
+        "pixel-float": "pixel-float 3s infinite ease-in-out",
+        "pixel-bob": "pixel-bob 0.5s infinite alternate",
+        "scanline-move": "scanline 1s linear infinite",
+        "pixel-blink": "pixel-blink 2s infinite",
+        "pixel-walk": "pixel-walk 1s infinite steps(4)",
+        "pixel-fade": "pixel-fade 2s infinite alternate",
       },
       keyframes: {
         float: {
@@ -129,6 +138,38 @@ module.exports = {
         "moral-shift": {
           "0%": { backgroundColor: "rgba(127, 127, 127, 0.1)" },
           "100%": { backgroundColor: "rgba(var(--moral-color), 0.2)" },
+        },
+
+        // Pixel Art animation keyframes
+        "pixel-pulse": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+        },
+        "pixel-float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-4px)" },
+        },
+        "pixel-bob": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-2px)" },
+        },
+        scanline: {
+          "0%": { transform: "translateY(0px)" },
+          "100%": { transform: "translateY(16px)" },
+        },
+        "pixel-blink": {
+          "0%, 100%": { opacity: 1 },
+          "49%": { opacity: 1 },
+          "50%": { opacity: 0 },
+          "99%": { opacity: 0 },
+        },
+        "pixel-walk": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(4px)" },
+        },
+        "pixel-fade": {
+          "0%": { opacity: 0.5 },
+          "100%": { opacity: 1 },
         },
       },
     },

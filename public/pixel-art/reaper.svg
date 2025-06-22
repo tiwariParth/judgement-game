@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Reaper Pixel Art -->
+  <!-- Hood -->
+  <rect x="24" y="8" width="16" height="4" fill="#111111"/>
+  <rect x="20" y="12" width="24" height="4" fill="#222222"/>
+  <rect x="20" y="16" width="24" height="4" fill="#333333"/>
+  
+  <!-- Face (darkness) -->
+  <rect x="24" y="16" width="16" height="8" fill="#000000"/>
+  <rect x="24" y="24" width="4" height="4" fill="#000000"/>
+  <rect x="36" y="24" width="4" height="4" fill="#000000"/>
+  
+  <!-- Eyes -->
+  <rect x="28" y="20" width="4" height="4" fill="#d4af37"/>
+  <rect x="36" y="20" width="4" height="4" fill="#d4af37"/>
+  
+  <!-- Body -->
+  <rect x="24" y="28" width="16" height="16" fill="#111111"/>
+  <rect x="20" y="36" width="24" height="8" fill="#222222"/>
+  
+  <!-- Scythe handle -->
+  <rect x="40" y="28" width="16" height="4" fill="#6d3d1e"/>
+  
+  <!-- Scythe blade -->
+  <rect x="44" y="16" width="4" height="12" fill="#cccccc"/>
+  <rect x="48" y="12" width="4" height="8" fill="#cccccc"/>
+  <rect x="52" y="8" width="4" height="8" fill="#cccccc"/>
+  <rect x="56" y="4" width="4" height="8" fill="#cccccc"/>
+  
+  <!-- Hands -->
+  <rect x="24" y="32" width="4" height="4" fill="#444444"/>
+  <rect x="40" y="28" width="4" height="4" fill="#444444"/>
+</svg>

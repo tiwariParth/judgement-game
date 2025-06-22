@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Soul Pixel Art -->
+  
+  <!-- Soul aura -->
+  <rect x="24" y="8" width="16" height="4" fill="#ffffff" fill-opacity="0.5"/>
+  <rect x="20" y="12" width="24" height="4" fill="#ffffff" fill-opacity="0.5"/>
+  <rect x="16" y="16" width="32" height="8" fill="#ffffff" fill-opacity="0.5"/>
+  <rect x="16" y="24" width="32" height="16" fill="#ffffff" fill-opacity="0.5"/>
+  <rect x="20" y="40" width="24" height="8" fill="#ffffff" fill-opacity="0.5"/>
+  <rect x="24" y="48" width="16" height="4" fill="#ffffff" fill-opacity="0.5"/>
+  
+  <!-- Soul face -->
+  <rect x="28" y="24" width="4" height="4" fill="#e0e0e0"/>
+  <rect x="36" y="24" width="4" height="4" fill="#e0e0e0"/>
+  <rect x="28" y="36" width="12" height="4" fill="#e0e0e0"/>
+  
+  <!-- Soul body -->
+  <rect x="28" y="28" width="12" height="8" fill="#f0f0f0"/>
+</svg>

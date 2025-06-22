@@ -14,6 +14,15 @@
   --heaven-glow: 0 0 15px rgba(58, 123, 213, 0.6);
   --hell-glow: 0 0 15px rgba(139, 0, 0, 0.6);
   --redemption-glow: 0 0 15px rgba(155, 89, 182, 0.6);
+  
+  /* Retro pixel art variables */
+  --pixel-size: 4px;
+  --retro-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+  --retro-border: 4px solid #000;
+  --pixel-font: var(--font-press-start);
+  --retro-heaven: #3a7bd5;
+  --retro-hell: #8b0000; 
+  --retro-redemption: #9b59b6;
 }
 
 body {
@@ -62,6 +71,114 @@ body {
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
+}
+
+/* Pixel Art Styles */
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.pixel-border {
+  border: var(--pixel-size) solid #000;
+  box-shadow: var(--retro-shadow);
+}
+
+.pixel-text {
+  font-family: var(--pixel-font), monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.pixel-button {
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  padding: 8px 16px;
+  transition: all 0.1s ease;
+  image-rendering: pixelated;
+  transform: translateY(0);
+  background-image: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+  background-size: 8px 8px;
+}
+
+.pixel-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px #000;
+}
+
+.pixel-button:active {
+  transform: translateY(4px);
+  box-shadow: 0px 0px 0px #000;
+}
+
+/* Pixelated Background */
+.pixel-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='8' height='8' fill='%23000' fill-opacity='0.15'/%3E%3C/svg%3E");
+  background-size: var(--pixel-size);
+}
+
+/* Retro UI Elements */
+.retro-container {
+  border: var(--pixel-size) solid #000;
+  background-color: #222;
+  padding: 16px;
+  box-shadow: var(--retro-shadow);
+  position: relative;
+}
+
+.retro-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image: linear-gradient(to right, #d4af37 25%, transparent 25%, transparent 50%, #d4af37 50%, #d4af37 75%, transparent 75%, transparent);
+  background-size: 16px 16px;
+}
+
+.pixel-heaven {
+  border: var(--pixel-size) solid var(--retro-heaven);
+  box-shadow: 4px 4px 0px rgba(58, 123, 213, 0.6);
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='8' height='8' fill='%233a7bd5' fill-opacity='0.1'/%3E%3C/svg%3E");
+}
+
+.pixel-hell {
+  border: var(--pixel-size) solid var(--retro-hell);
+  box-shadow: 4px 4px 0px rgba(139, 0, 0, 0.6);
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='8' height='8' fill='%238b0000' fill-opacity='0.1'/%3E%3C/svg%3E");
+}
+
+.pixel-redemption {
+  border: var(--pixel-size) solid var(--retro-redemption);
+  box-shadow: 4px 4px 0px rgba(155, 89, 182, 0.6);
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='8' height='8' fill='%239b59b6' fill-opacity='0.1'/%3E%3C/svg%3E");
+}
+
+@keyframes pixel-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(16px); }
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  animation: scanline 1s linear infinite;
+  pointer-events: none;
+  z-index: 10;
 }
 
 /* Mystical Elements */
@@ -142,4 +259,34 @@ body {
 .judgment-scroll {
   background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50 L0 50 L50 0 L50 50 L100 50 L50 100 Z' fill='%23d4af37' fill-opacity='0.05'/%3E%3C/svg%3E");
   background-size: 100px 100px;
+}
+
+/* Retro Pixel Art Styles */
+body {
+  font-family: var(--pixel-font);
+}
+
+.pixel-art {
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+}
+
+.retro-shadow {
+  box-shadow: var(--retro-shadow);
+}
+
+.retro-border {
+  border: var(--retro-border);
+}
+
+.retro-heaven {
+  color: var(--retro-heaven);
+}
+
+.retro-hell {
+  color: var(--retro-hell);
+}
+
+.retro-redemption {
+  color: var(--retro-redemption);
 }
